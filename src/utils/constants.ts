@@ -90,24 +90,70 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
 }
 
 export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number): string => {
-  if (!(chainId in CHAIN_CONFIGS)) throw new Error(`Universal Router not deployed on chain ${chainId}`)
-  return CHAIN_CONFIGS[chainId].router
-}
-
-export const UNIVERSAL_ROUTER_CREATION_BLOCK = (chainId: number): number => {
-  if (!(chainId in CHAIN_CONFIGS)) throw new Error(`Universal Router not deployed on chain ${chainId}`)
-  return CHAIN_CONFIGS[chainId].creationBlock
+  switch (chainId) {
+    case 1: // mainnet
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 5: // goerli
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 11155111: // sepolia
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 137: // polygon
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 80001: // polygon mumbai
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 10: // optimism
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 420: // optimism goerli
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 42161: // arbitrum
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 421613: // arbitrum goerli
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 42220: // celo
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 44787: // celo alfajores
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 56: // binance smart chain
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'
+    case 1666700000: // harmony testnet smart chain
+      return '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD'  
+    case 1666600000: // harmony smart chain
+      return '0x9D0ABc98b8848fFE2FFEabdbe1b788E1819eeaCf'    
+    default:
+      throw new Error(`Universal Router not deployed on chain ${chainId}`)
+  }
 }
 
 export const WETH_ADDRESS = (chainId: number): string => {
-  if (!(chainId in CHAIN_CONFIGS)) throw new Error(`Universal Router not deployed on chain ${chainId}`)
-
-  if (CHAIN_CONFIGS[chainId].weth == WETH_NOT_SUPPORTED_ON_CHAIN) throw new Error(`Chain ${chainId} does not have WETH`)
-
-  return CHAIN_CONFIGS[chainId].weth
+  switch (chainId) {
+    case 1: //mainnet
+      return '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+    case 5: // goerli
+      return '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6'
+    case 137: // polygon
+      return '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270'
+    case 80001: // polygon mumbai
+      return '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889'
+    case 10: // optimism
+      return '0x4200000000000000000000000000000000000006'
+    case 420: // optimism goerli
+      return '0x4200000000000000000000000000000000000006'
+    case 42161: // arbitrum
+      return '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1'
+    case 421613: // arbitrum goerli
+      return '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3'
+    case 56: // binance smart chain
+      return '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c'
+    case 1666700000: // harmony testnet smart chain
+      return '0xcf664087a5bb0237a0bad6742852ec6c8d69a27a'  
+    case 1666600000: // harmony smart chain
+      return '0xcf664087a5bb0237a0bad6742852ec6c8d69a27a'  
+    default:
+      throw new Error(`WETH9 or UniversalRouter not deployed on chain ${chainId}`)
+  }
 }
 
-export const PERMIT2_ADDRESS = '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+export const PERMIT2_ADDRESS = '0xFC7Bc072169aaB86Ed9b31F941E70Bf7ad89c8D2'
 
 export const CONTRACT_BALANCE = BigNumber.from(2).pow(255)
 export const ETH_ADDRESS = '0x0000000000000000000000000000000000000000'
