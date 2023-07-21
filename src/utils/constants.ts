@@ -24,6 +24,8 @@ export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number): string => {
       return '0x4648a43B2C14Da09FdF82B161150d3F634f40491'
     case 56: // binance smart chain
       return '0x5Dc88340E1c5c6366864Ee415d6034cadd1A9897'
+    case 1666600000: // harmony mainnet
+      return '0xdAa5Bf7004e33789ce13A2bBE620953B55608B8b'
     default:
       throw new Error(`Universal Router not deployed on chain ${chainId}`)
   }
@@ -49,12 +51,14 @@ export const WETH_ADDRESS = (chainId: number): string => {
       return '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3'
     case 56: // binance smart chain
       return '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c'
+    case 1666600000: // harmony mainnet
+      return '0xcf664087a5bb0237a0bad6742852ec6c8d69a27a'
     default:
       throw new Error(`WETH9 or UniversalRouter not deployed on chain ${chainId}`)
   }
 }
 
-export const PERMIT2_ADDRESS = '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+export const PERMIT2_ADDRESS = '0x00000000BD0047637ac6BA3af44b52005ceD9557'
 
 export const CONTRACT_BALANCE = BigNumber.from(2).pow(255)
 export const ETH_ADDRESS = '0x0000000000000000000000000000000000000000'
